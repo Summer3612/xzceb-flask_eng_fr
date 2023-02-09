@@ -10,14 +10,14 @@ def englishToFrench():
     textToTranslate = request.args.get('textToTranslate')
     # Write your code here
     result = translator.englishToFrench(textToTranslate)
-    return "Translated text to French"
+    return result
 
 @app.route("/frenchToEnglish")
 def frenchToEnglish():
     textToTranslate = request.args.get('textToTranslate')
     # Write your code here
     result = translator.frenchToEnglish(textToTranslate)
-    return "Translated text to English"
+    return result
 
 @app.route("/")
 def renderIndexPage():
