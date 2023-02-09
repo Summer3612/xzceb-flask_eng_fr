@@ -1,9 +1,7 @@
-import json
+import os
 from ibm_watson import LanguageTranslatorV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-import os
 from dotenv import load_dotenv
-from ibm_watson import ApiException
 
 load_dotenv()
 
@@ -20,17 +18,25 @@ language_translator.set_service_url(url)
 language_translator.set_disable_ssl_verification(True)
 
 
+def englishToFrench(english_text:str):
+    result = language_translator.translate(
+        text = english_text,
+        model_id = 'en-fr').get_result()
 
-def englishToFrench(englishText):
-   
-    frenchText = language_translator.translate(
-        text = englishText,
-        model_id = 'en-es').get_result()
-    
-    return frenchText
+    french_text = result['translations'][0]['translation']
+
+    return french_text
+
+def frenchToEnglish(french_text:str):
+    #write the code here
+    result = language_translator.translate(
+        text = french_text,
+        model_id = 'fr-en').get_result()
+    english_text = result['translations'][0]['translation']
+
+    return english_text
 
 
 if __name__ =='__main__':
-    print (englishToFrench('hello'))
-
+    print(frenchToEnglish(''))
     
