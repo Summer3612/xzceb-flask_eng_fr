@@ -19,6 +19,9 @@ language_translator.set_disable_ssl_verification(True)
 
 
 def englishToFrench(english_text:str):
+    if english_text == '':
+        return 'Text cannot be empty, please re-enter'
+
     result = language_translator.translate(
         text = english_text,
         model_id = 'en-fr').get_result()
@@ -29,6 +32,9 @@ def englishToFrench(english_text:str):
 
 def frenchToEnglish(french_text:str):
     #write the code here
+    if french_text == '':
+        return 'Text cannot be empty, please re-enter'
+    
     result = language_translator.translate(
         text = french_text,
         model_id = 'fr-en').get_result()
@@ -38,5 +44,5 @@ def frenchToEnglish(french_text:str):
 
 
 if __name__ =='__main__':
-    print(frenchToEnglish(''))
+    print(englishToFrench(''))
     
